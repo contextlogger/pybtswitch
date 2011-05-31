@@ -11,6 +11,9 @@
 ;; Platform dependency. Supports <%= build.target.handle %>.
 <%= build.target.pkg_dependency_string %>
 
+;; Tested to work on these devices.
+[0x2000249b], 0, 0, 0, {"Nokia E71"}
+
 <% dllname = $exeb[build].bin_basename %>
 
 <% if build.v9? %>

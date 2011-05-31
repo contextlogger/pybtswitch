@@ -14,7 +14,7 @@ $basename = "pybtswitch"
 
 $proj = Sake::Project.new(:basename => $basename,
                           :name => "BT Switch API for PyS60",
-                          :version => [1, 1],
+                          :version => [1, 2],
                           # This is a test UID.
                           :uid => Sake::Uid.v8($uid_v8),
                           :vendor => "HIIT")
