@@ -2,7 +2,9 @@ KIT := s60_30
 CERT := dev
 
 BASENAME := pybtswitch
-VERSION := 1.01
+VERSION := 1.02
+
+default : bin
 
 -include local/custom.mk
 

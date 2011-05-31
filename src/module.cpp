@@ -66,7 +66,7 @@ static PyObject *_fn__pybtswitch__set_power_state(PyObject *aPyMod, PyObject *aP
     {
       return NULL;
     }
-  TBool powerState = (intPowerState ? ETrue : EFalse);
+  TBool powerState = (intPowerState != EFalse);
 
   CBTMCMSettings* settings = NULL;
   TRAPD(error, settings = CBTMCMSettings::NewL());
