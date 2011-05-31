@@ -1,0 +1,36 @@
+targettype 	dll
+TARGET	       	<%= $pyd.bin_basename %>.pyd
+
+<% unless build.v9? %>
+TARGETPATH      \system\libs\
+<% end %>
+
+UID             <%= build.uid2.chex_string %> <%= build.uid3.chex_string %>
+
+NOSTRICTDEF
+EXPORTUNFROZEN
+
+SYSTEMINCLUDE 	\epoc32\include
+SYSTEMINCLUDE 	\epoc32\include\libc
+SYSTEMINCLUDE 	\epoc32\include\python
+
+LIBRARY 	python222.lib
+LIBRARY 	euser.lib
+library         bluetooth.lib 
+library         btdevice.lib
+library         bteng.lib // an SDK add-on
+
+<% if build.trait_map[:do_logging] %>
+LIBRARY         flogger.lib
+<% end %>
+
+USERINCLUDE 	.
+USERINCLUDE 	..\..\src
+
+SOURCEPATH 	..\..\src
+source		module.cpp
+
+<% if build.v9? %>
+// We apparently require LocalServices and WriteDeviceData, but better use all DevCert caps to allow processes with higher caps to load the library.
+CAPABILITY 	<%= build.caps_string %>
+<% end %>
